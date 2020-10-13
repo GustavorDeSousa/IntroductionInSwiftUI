@@ -40,7 +40,7 @@ let animes = [
         descricao: "Nosso herói Bell retorna nessa 3ª temporada para um encontro com uma garota-monstro que mudará Orario!")
 ]
 
-struct restaurantRow: View {
+struct animeRow: View {
     var animeDTO: AnimeDTO
     
     var body: some View {
@@ -75,7 +75,6 @@ struct ContentView: View {
                         .clipShape(Circle())
                         .shadow(radius: 10)
                     Spacer()// Defini um espaço vazio podendo ser entre dois componentes ou somente com o a propria superview
-                    
                     Text("Bem Vindo ao Crunchroll, \n\nGustavo Rocha")
                         .font(.headline)
                         .fontWeight(.heavy)
@@ -91,10 +90,11 @@ struct ContentView: View {
                     .font(.headline)
                     .padding([.top, .leading, .trailing, .bottom], 10.0)
             }.background(Color(hue: 1.0, saturation: 0.004, brightness: 0.159, opacity: 0.695))
+            
             NavigationView {
                 List(animes) { anime in //Criacao da lista com base no objeto
                     NavigationLink(destination: DetailAnimeView(anime: anime)) {
-                        restaurantRow(animeDTO: anime)
+                        animeRow(animeDTO: anime)
                     }
                 }
                 .navigationBarTitle("Animes", displayMode: .inline)
